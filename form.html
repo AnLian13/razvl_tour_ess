@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="day_10591405.png">
+    <title>Оставить заявку</title> 
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: 0;
+        outline: 0;
+        cursor: url('Габриэль.jpeg'), auto;
+    }
+
+    h2 {
+        color: white;
+        text-align: center;
+        font-size: 60px;
+        margin: 25px;
+    }
+
+    body {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("1639671217_10-catherineasquithgallery-com-p-rozovii-vesennii-fon-18.jpg");
+}
+
+    .contacts {
+  padding: 2rem 9%;
+  
+}
+
+.contacts .heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+  font-size: calc(25px + (70 - 25) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.contacts .heading span {
+  color: rgb(128, 0, 0);
+} 
+
+.contacts .roww {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 1.5rem;
+}
+
+.contacts .roww form {
+  flex: 1 1 40rem;
+  }
+
+.contacts .roww form .box {
+  width: 100%;
+  margin: 1rem 0rem 2rem;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  
+}
+
+.contacts .roww form span {
+  color: white;
+  font-size: 50px;
+  cursor: url('type_5987600.png'), auto;
+}
+
+
+.btn {
+  padding: 1rem 3 rem;
+  border-radius: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 150px;
+  height: 100px;
+  align-items: center;
+  margin: 10px;
+  cursor: url('hand-cursor_5987538.png'), auto;
+}
+
+.btn:hover {
+  background-color: rgb(51, 255, 0);
+  color: #fff;
+  cursor: url('hand-cursor_5987538.png'), auto;
+}
+    </style>
+</head>
+<body>
+    <section class="contacts">
+        <h2>Забронировать тур можно здесь</h2>
+      
+        <div class="roww">
+          <form class="form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="7cc15e8d-cfa7-43ad-9b6f-d6d5f725dcb6">
+            <span>Ваше имя</span>
+            <input type="text" name="name" id="" class="box" required placeholder="Введите ваше имя" autocomplete="off">
+            <span>Ваш адрес электронной почты</span>
+            <input type="email" name="email" id="" class="box" required placeholder="Введите ваш email" autocomplete="off">
+            <span>Ваш телефон</span>
+            <input type="number" name="number" id="" class="box" required placeholder="Введите ваш телефон" autocomplete="off">
+            <input type="submit" value="Забронировать" class="btn">
+          </form>
+          </div>
+          <button class="btn">
+            <a href="index.html"><p>На главную</p></a>
+          </button>
+      </section>
+</body>
+</html>

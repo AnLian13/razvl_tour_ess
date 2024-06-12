@@ -1,0 +1,222 @@
+
+.text-effect-wrapper,
+.text {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+}
+
+.text-effect-wrapper {
+  /* Can be anything light-colored */
+  --spotlight-color: rgb(221, 0, 255);
+
+  overflow: hidden;
+  position: relative;
+
+  /* Shimmer animation */
+  &::before {
+    -webkit-animation: shimmer 13s infinite linear;
+            animation: shimmer 13s infinite linear;
+    background: 
+      radial-gradient(circle, var(--spotlight-color), transparent 25%) 0 0 / 25% 25%,
+      radial-gradient(circle, var(--spotlight-color), black 25%) 50% 50% / 12.5% 12.5%;
+    inset-block-start: -100%;
+    inset-inline-start: -100%;
+    mix-blend-mode: color-dodge;
+    z-index: 3;
+  }
+
+  /* Extra filter to boost colors and contrast */
+  &::after {
+    -webkit-backdrop-filter: blur(1px) brightness(90%) contrast(150%);
+            backdrop-filter: blur(1px) brightness(90%) contrast(150%);
+    z-index: 4;
+  }
+}
+h1.text {
+  font-size: 44px;
+}
+
+h2 {
+  font-size: 28px;
+  text-align: center;
+  color: #fff;
+  margin: 30px;
+  cursor:url(Varu.jpeg);
+}
+
+
+.h2c {
+  text-align: center;
+}
+
+h3 {
+  color:#fff;
+
+}
+p {
+  color: #fff;
+}
+
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+
+.text {
+  /* Mask colors */
+  /* Should be black and white */
+  --background-color: rgb(179, 0, 255);
+  --text-color: rgb(218, 30, 30);
+
+  /* Text color */
+  /* Can be anything */
+  --color-1: white;
+  --color-2: rgb(130, 21, 130);
+
+  /* Fuzzy white outline text */
+  color: transparent;
+  text-shadow: 
+    0 0 0.02em var(--background-color), 
+    0 0 0.02em var(--text-color),
+    0 0 0.02em var(--text-color), 
+    0 0 0.02em var(--text-color);
+
+  /* Improve contrast of outline */
+  &::before {
+    -webkit-backdrop-filter: blur(0.013em) brightness(400%);
+            backdrop-filter: blur(0.013em) brightness(400%);
+    z-index: 1;
+  }
+
+  /* Add text color */
+  &::after {
+    background: linear-gradient(45deg, var(--color-1), var(--color-2));
+    mix-blend-mode: multiply;
+    z-index: 2;
+  }
+}
+
+/* Alternative styling */
+body:has(#option-toggle:checked) {
+  & .text-effect-wrapper {
+    --spotlight-color: orange;
+    
+    &::after {
+      -webkit-backdrop-filter: brightness(90%) contrast(150%);
+              backdrop-filter: brightness(90%) contrast(150%);
+    }
+  }
+
+  & .text {
+    --angle: 5deg;
+    --color-1: hsl(163, 100%, 51%);
+    --color-2: hsl(295, 88%, 32%);
+    --color-3: hsl(59, 100%, 50%);
+
+    text-shadow: 
+      0 0 0.03em var(--background-color),
+      0 0 0.03em var(--text-color);
+    
+    &::before {
+      -webkit-backdrop-filter: brightness(150%) contrast(200%);
+              backdrop-filter: brightness(150%) contrast(200%);
+    }
+
+    &::after {
+      background: linear-gradient(var(--angle), var(--color-1), var(--color-2), var(--color-3));
+      mix-blend-mode: color-dodge;
+    }
+  } 
+}
+
+/* === Pen styling, ignore */
+
+h1 {
+  --font-size: clamp(6.25rem, 3.25rem + 15vw, 13.75rem);
+
+  font: 700 var(--font-size)/1 "Lato", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+
+  &:empty,
+  &:focus {
+    border: 2px dotted rgb(0, 0, 0);
+    min-width: 1ch;
+    outline-offset: 5px;
+  }
+}
+
+body {
+  background: black;
+  /* display: flex; */
+  height: 200px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+label {
+  background-color: hsl(240deg, 20%, 50%);
+  border-radius: 5px;
+  color: #fff;
+  padding: 0.5em 1em;
+  
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  
+  &:has(:checked) {
+    background-color: hsl(350deg, 60%, 50%);
+  }
+}
+
+input {
+  position: absolute;
+  opacity: 0;
+}
+
+.slide {
+  height: 80vh;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  color: #fff;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+
+.slide h3 {
+  position: absolute;
+  font-size: 24px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.slide.active {
+  flex: 10;
+}
+
+.slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
